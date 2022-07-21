@@ -17,10 +17,10 @@ public class TestMessageSenderImpl {
 
     @Test
     void test_message_send_ru_text() {
-        GeoService geoService = Mockito.mock(GeoServiceImpl.class);
+        GeoService geoService = Mockito.mock(GeoService.class);
         Mockito.when(geoService.byIp(Mockito.startsWith("172.")))
                 .thenReturn(new Location("Moscow", Country.RUSSIA, null, 0));
-        LocalizationService localizationService = Mockito.mock(LocalizationServiceImpl.class);
+        LocalizationService localizationService = Mockito.mock(LocalizationService.class);
         Mockito.when(localizationService.locale(Country.RUSSIA))
                 .thenReturn("Добро пожаловать");
         MessageSenderImpl messageSenderImpl = new MessageSenderImpl(geoService, localizationService);
@@ -33,10 +33,10 @@ public class TestMessageSenderImpl {
 
     @Test
     void test_message_send_eng_text() {
-        GeoService geoService =Mockito.mock(GeoServiceImpl.class);
+        GeoService geoService =Mockito.mock(GeoService.class);
         Mockito.when(geoService.byIp(Mockito.startsWith("96.")))
                 .thenReturn(new Location("New York", Country.USA, null,  0));
-        LocalizationService localizationService = Mockito.mock(LocalizationServiceImpl.class);
+        LocalizationService localizationService = Mockito.mock(LocalizationService.class);
         Mockito.when(localizationService.locale(Country.USA))
                 .thenReturn("Welcome");
         MessageSenderImpl messageSender = new MessageSenderImpl(geoService, localizationService);
